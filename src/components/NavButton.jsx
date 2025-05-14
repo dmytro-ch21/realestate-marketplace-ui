@@ -1,14 +1,15 @@
-import { Link } from 'react-router';
+import { NavLink } from 'react-router';
+import './NavButton.css';
 
 function NavButton({ to, text }) {
   return (
     <>
-      <Link
-        className="text-decoration-none btn btn-outline-dark btn-sm m-2"
+      <NavLink
         to={to}
+        className={({ isActive }) => `${isActive ? 'active' : 'non-active'}`}
       >
         {text}
-      </Link>
+      </NavLink>
     </>
   );
 }
