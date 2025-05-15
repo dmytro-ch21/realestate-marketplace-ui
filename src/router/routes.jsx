@@ -4,6 +4,10 @@ import ErrorPage from './ErrorPage.jsx';
 import Home from '../pages/home/Home.jsx';
 import Landing from '../pages/landing/Landing.jsx';
 import Listing from '../pages/listing/Listing.jsx'
+import Wishlist from '../pages/wishlist/Wishlist.jsx'
+import SignUp from '../pages/signup/SignUp.jsx'
+import Login from '../pages/login/Login.jsx'
+import Profile from '../pages/profile/Profile.jsx'
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +20,10 @@ export const router = createBrowserRouter([
       { path: '/home', element: <Home /> },
       { path: '/listings/:id', element: <Listing /> },
       { path: '/landing', element: <Landing /> },
+      { path: '/wishlist', element: <Wishlist /> },
+      { path: '/signup', element: <SignUp /> },
+      { path: '/login', element: <Login /> },
+      { path: '/profile', element: <Profile /> },
     ],
   },
 ]);

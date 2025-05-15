@@ -1,19 +1,16 @@
-import { Link, Navigate } from 'react-router';
-import Logo from '../../components/Logo.jsx';
-import NavButton from '../../components/NavButton.jsx';
+import PropertyListing from '../../components/PropertyListing.jsx';
+import SearchBar from '../../components/SearchBar.jsx'
+import { useGlobalStore } from '../../hooks/useGlobalStore.js';
 
 function Home() {
+  const { store, _ } = useGlobalStore();
+
   return (
-    <>
-      <h1 className="text-center mt-5 text-body-secondary fw-bold">
-        Uh, I guess you dont have anything to show yet on Home Page?
-      </h1>
-      <Logo />
-      <div className="text-center">
-        <NavButton to="/about" text={'> About'} />
-        <NavButton to="/demo" text="> Demo" />
-      </div>
-    </>
+    <div className="container my-4 p-0">
+      <h2 className="fw-bold mb-4">Listings Page</h2>
+      <SearchBar className="mx-0"/>
+      <PropertyListing properties={store.listings} />
+    </div>
   );
 }
 
