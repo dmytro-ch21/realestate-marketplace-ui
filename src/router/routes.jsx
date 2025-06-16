@@ -7,7 +7,7 @@ import Listing from '../pages/listing/Listing.jsx'
 import Wishlist from '../pages/wishlist/Wishlist.jsx'
 import SignUp from '../pages/signup/SignUp.jsx'
 import Login from '../pages/login/Login.jsx'
-import Profile from '../pages/profile/Profile.jsx'
+import Profile from '../pages/profile/index.jsx'
 
 export const router = createBrowserRouter([
   {
