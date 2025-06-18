@@ -1,24 +1,36 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router";
+import { registerUser } from "../../api/auth";
 
 function SignUp() {
   const navigate = useNavigate();
 
+  const [showError, setShowError] = useState({ show: false, message: null });
+
   const [formData, setFormData] = useState({
-    email: '',
-    username: '',
-    password: '',
-    confirmPassword: '',
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
   });
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    console.log('Registration data', formData);
-    navigate('/login');
+    // console.log('Registration data', formData);
+    // navigate('/login');
+    let response = null;
+    try {
+      console.log("Form Data:", formData);
+      const { email, username, password } = formData;
+      response = await registerUser({ email, username, password });
+      navigate("/login");
+    } catch (error) {
+      setShowError({show: true, message: response.message});
+    }
   };
 
   const handleOnChange = (e) => {
-    console.log(e.target.name, ':', e.target.value);
+    console.log(e.target.name, ":", e.target.value);
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -100,10 +112,10 @@ function SignUp() {
                     Submit
                   </button>
                 </div>
-                <div className='text-center mt-3'>
-                    <p>
-                        Already have an account? <Link to="/login">Login</Link>
-                    </p>
+                <div className="text-center mt-3">
+                  <p>
+                    Already have an account? <Link to="/login">Login</Link>
+                  </p>
                 </div>
               </form>
             </div>

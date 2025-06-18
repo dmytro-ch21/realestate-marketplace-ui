@@ -6,6 +6,7 @@ import ProfileDisplay from "./ProfileDisplay";
 import PasswordChange from "./PasswordChange";
 import PropertyDeleteModal from "./PropertyDeleteModal";
 import PropertyListings from "./PropertyListings";
+import PropertyModal from "./PropertyModal";
 
 function Profile() {
   // STATE ACCESS
@@ -121,6 +122,8 @@ function Profile() {
     setPropToDelete(null);
   };
 
+  const [showAddModal, setShowAddModal] = useState(false);
+
   return (
     <div className="container py-4">
       {editMode ? (
@@ -143,8 +146,23 @@ function Profile() {
           />
         </>
       )}
-      <PropertyListings ownedProperties={ownedProperties} onDelete={openDeleteModal} onAdd={() => alert('To be added!')}/>
-      <PropertyDeleteModal propToDelete={propToDelete} onConfirm={confirmDelete}/>
+      <PropertyListings
+        ownedProperties={ownedProperties}
+        onDelete={openDeleteModal}
+        onAdd={() => setShowAddModal(true)}
+      />
+      <PropertyDeleteModal
+        propToDelete={propToDelete}
+        onConfirm={confirmDelete}
+      />
+      {showAddModal && (
+        <PropertyModal
+          setShowAddModal={setShowAddModal}
+          profile={profile}
+          setProfile={setProfile}
+          setOwnedProperties={setOwnedProperties}
+        />
+      )}
     </div>
   );
 }

@@ -36,16 +36,12 @@
  */
 export const initialState = () => ({
   // demo for todos - replace with your needed state
-  todos: [
-    {
-      id: "1",
-      title: "This comes from your global store, delete it!",
-      completed: false,
-    },
-  ],
-  user: {
+  auth: {
+    error: null,
     isAuthenticated: false,
-    userId: 1,
+    user: null,
+    token: null,
+    loading: false,
   },
   listings: [
     {
